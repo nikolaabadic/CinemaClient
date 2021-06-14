@@ -1,0 +1,60 @@
+package rs.ac.bg.fon.CinemaClient.forms.components.tables;
+
+import java.util.List;
+import javax.swing.table.AbstractTableModel;
+
+import rs.ac.bg.fon.CinemaCommon.domain.Term;
+
+/**
+ *
+ * @author Nikola
+ */
+public class FrmTermSearchTableModel extends AbstractTableModel{
+    private final List<Term> terms;
+
+    public FrmTermSearchTableModel(List<Term> terms) {
+        this.terms = terms;
+    }
+    @Override
+    public int getRowCount() {
+        if(terms ==null){
+            return 0;
+        }
+        return terms.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return 5;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Term term = terms.get(rowIndex);
+        switch(columnIndex){
+            case 0: return rowIndex+1;
+            case 1: return term.getFilm().getName();
+            case 2: return term.getDate();
+            case 3: return term.getHall().getName();
+            case 4: return term.getProjectionType();
+            default: return "n/a";
+        }
+    }
+
+    @Override
+    public String getColumnName(int column) {
+        switch(column){
+            case 0: return "Num";
+            case 1: return "Title";
+            case 2: return "Date";
+            case 3: return "Hall";
+            case 4: return "Projection type";
+            default: return "n/a";
+        }
+    }
+
+    public List<Term> getList() {
+        return terms;
+    }
+}
+
