@@ -2,6 +2,11 @@ package rs.ac.bg.fon.CinemaClient.forms;
 
 import java.awt.event.ActionListener;
 
+import javax.swing.JTable;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author Nikola
@@ -26,6 +31,9 @@ public class FrmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
+        lblTitle = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblTopMovies = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuFilm = new javax.swing.JMenu();
         miFilmCreate = new javax.swing.JMenuItem();
@@ -41,6 +49,22 @@ public class FrmMain extends javax.swing.JFrame {
         miReservationDelete = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setText("IMDb Top 10 Movies");
+
+        tblTopMovies.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblTopMovies);
 
         jMenuFilm.setText("Film");
 
@@ -84,15 +108,25 @@ public class FrmMain extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(40)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 676, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(lblTitle))
+        			.addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 304, Short.MAX_VALUE)
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(40)
+        			.addComponent(lblTitle)
+        			.addGap(30)
+        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(68, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>                        
@@ -102,6 +136,8 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuFilm;
     private javax.swing.JMenu jMenuReservation;
     private javax.swing.JMenu jMenuTerm;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JMenuItem miFilmCreate;
     private javax.swing.JMenuItem miFilmDelete;
     private javax.swing.JMenuItem miFilmSearch;
@@ -111,8 +147,9 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem miTermDelete;
     private javax.swing.JMenuItem miTermEdit;
     private javax.swing.JMenuItem miTermSearch;
+    private javax.swing.JTable tblTopMovies;
     // End of variables declaration                   
-
+    
     public void miFilmCreateAddActionListener(ActionListener actionListener){
         miFilmCreate.addActionListener(actionListener);
     }
@@ -143,5 +180,12 @@ public class FrmMain extends javax.swing.JFrame {
     public void miTermDeleteAddActionListener(ActionListener actionListener){
         miTermDelete.addActionListener(actionListener);
     }
-}
 
+    public JTable getTblTopMovies() {
+        return tblTopMovies;
+    }
+
+    public void setTblTopMovies(JTable tblTopMovies) {
+        this.tblTopMovies = tblTopMovies;
+    }
+}
